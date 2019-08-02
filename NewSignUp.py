@@ -14,7 +14,7 @@ class signup:
     # Tarayıcı kapama fonksiyonu
     def tearDown(self):
         self.driver.quit()
-
+    # Kayıtlı kullanıcıyı üye yapma fonksiyonu
     def registered_signup(self,username,name,surname,password,rePassword,referrenceCode):
 
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[2]/span[1]").click()
@@ -38,6 +38,7 @@ class signup:
             self.driver.execute_script("window.history.go(-1)")
             self.driver.refresh()
 
+    # Geçersiz mail girme fonksiyonu
     def invalid_mail_signup(self,username,name,surname,password,rePassword,referrenceCode):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[2]/span[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
@@ -60,6 +61,7 @@ class signup:
             self.driver.execute_script("window.history.go(-1)")
             self.driver.refresh()
 
+    # Şifreyi alanını boş bırakma fonksiyonu
     def empty_password_signup(self,username,name,surname,password,rePassword,referrenceCode):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[2]/span[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
@@ -82,6 +84,7 @@ class signup:
             self.driver.execute_script("window.history.go(-1)")
             self.driver.refresh()
 
+    # Eşleşmeyen şifre girme fonksiyonu
     def wrong_password_signup(self,username,name,surname,password,rePassword,referrenceCode):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[2]/span[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
