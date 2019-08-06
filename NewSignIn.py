@@ -9,16 +9,14 @@ class login:
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get("https://dev.bitexen.com/")
-        self.driver.implicitly_wait(5)
+        self.driver.implicitly_wait(10)
 
-
-    #Tarayıcı kapama fonksiyonu
-    def tearDown(self):
+    # Tarayıcı kapama fonksiyonu
+    def teardown(self):
 
         self.driver.quit()
 
-
-    # Başarılı giriş yapma testi
+    # Başarılı giriş yapma testi.
     def success_login(self, username, password):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
@@ -30,12 +28,12 @@ class login:
                 print("success_login --->  " + "TEST BAŞARILI! Giriş yapıldı. " + "İstenilen hata mesajı alındı: " + x)
 
         except:
-            print("success_login --->   "+ "TEST BAŞARISIZ! Giriş yapılamadı")
+            print("success_login --->   " + "TEST BAŞARISIZ! Giriş yapılamadı")
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
 
-    # Yanlış mail adresi girme testi.#
+    # Yanlış mail adresi girme testi.
     def wrong_mail_login(self, username, password):
+
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
         self.driver.find_element_by_id("password").send_keys(password)
@@ -47,13 +45,13 @@ class login:
             elif x == "Kullanıcı adı ya da şifre hatalı.":
                 print("wrong_mail_login --->  " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
+
         except:
             print("wrong_mail_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
 
-    #Yanlış şifre girme testi.#
+    # Yanlış şifre girme testi.
+
     def wrong_password_login(self, username, password):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
@@ -66,13 +64,31 @@ class login:
                 print("wrong_password_login --->  "+ "TEST BAŞARILI! Giriş yapılamadı. " + "İstenilen hata mesajı alındı: " + x)
 
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
+
         except:
             print("wrong_password_login --->   "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
 
-    #Geçersiz mail girme testi.
+    # Şifre alanı boş testi.
+    def password_is_empty_login(self,username,password):
+        self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[1]").click()
+        self.driver.find_element_by_id("userName").send_keys(username)
+        self.driver.find_element_by_id("password").send_keys(password)
+        self.driver.find_element_by_xpath("//*[@id='root']/div/div[3]/button/span[1]").click()
+
+        try:
+            x = self.driver.find_element(By.XPATH, "//*[@id='password-helper-text']").text
+            if x == "Boş bırakılamaz":
+                print(
+                    "password_is_empty_login --->  " + "TEST BAŞARILI! Giriş yapılamadı. " + "İstenilen hata mesajı alındı: " + x)
+
+            self.driver.execute_script("window.history.go(-1)")
+
+        except:
+            print("password_is_empty_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            self.driver.execute_script("window.history.go(-1)")
+
+    # Geçersiz mail girme testi.
     def invalid_login(self, username, password):
         self.driver.find_element_by_xpath("//*[@id='root']/div/div[1]/div[1]/div/div/div[2]/a[1]").click()
         self.driver.find_element_by_id("userName").send_keys(username)
@@ -86,11 +102,12 @@ class login:
                 print("invalid_login --->   "+"TEST BAŞARILI! Giriş yapılamadı. "  + "İstenilen hata mesajı alındı: " + x)
 
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
+
         except:
             print("invalid_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+
             self.driver.execute_script("window.history.go(-1)")
-            self.driver.refresh()
+
 
 
 
