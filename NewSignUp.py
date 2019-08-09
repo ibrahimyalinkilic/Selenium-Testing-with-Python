@@ -36,7 +36,7 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("registered_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("registered_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Kullanıcı zaten mevcut.")
             self.driver.execute_script("window.history.go(-1)")
 
     # Geçersiz mail
@@ -59,7 +59,7 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("invalid_mail_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("invalid_mail_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Geçersiz e-posta adresi")
             self.driver.execute_script("window.history.go(-1)")
 
     # Şifre alanı boş
@@ -82,7 +82,7 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("empty_password_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("empty_password_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Boş bırakılamaz")
             self.driver.execute_script("window.history.go(-1)")
 
     # Şifreler eşleşmiyor
@@ -105,7 +105,7 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("wrong_password_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("wrong_password_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Girdiğiniz şifreler eşleşmiyor")
             self.driver.execute_script("window.history.go(-1)")
 
     # Şifre yeterince uzunlukta değil
@@ -128,7 +128,7 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("password_not_long_enough_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("password_not_long_enough_signup --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Şifreniz en az 8 karakter olmalıdır")
             self.driver.execute_script("window.history.go(-1)")
 
     # Kullanıcı sözleşmesi onaylanmadı
@@ -150,5 +150,5 @@ class signup:
                 self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("unselected_checkbox --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("unselected_checkbox --->  "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Lütfen kullanıcı sözleşmesini onaylayınız")
             self.driver.execute_script("window.history.go(-1)")

@@ -9,7 +9,7 @@ class login:
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get("https://dev.bitexen.com/")
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(5)
 
     # Tarayıcı kapama fonksiyonu
     def teardown(self):
@@ -28,7 +28,7 @@ class login:
                 print("success_login --->  " + "TEST BAŞARILI! Giriş yapıldı. " + "İstenilen hata mesajı alındı: " + x)
 
         except:
-            print("success_login --->   " + "TEST BAŞARISIZ! Giriş yapılamadı")
+            print("success_login --->   " + "TEST BAŞARISIZ! Giriş yapılamadı" + "İstenilen hata mesajı alınamadı: " + 'Hoş geldin,')
             self.driver.execute_script("window.history.go(-1)")
 
     # Yanlış mail adresi girme testi.
@@ -47,7 +47,7 @@ class login:
             self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("wrong_mail_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("wrong_mail_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Customer not found.")
             self.driver.execute_script("window.history.go(-1)")
 
     # Yanlış şifre girme testi.
@@ -66,7 +66,7 @@ class login:
             self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("wrong_password_login --->   "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("wrong_password_login --->   "+"TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Kullanıcı adı ya da şifre hatalı.")
             self.driver.execute_script("window.history.go(-1)")
 
     # Şifre alanı boş testi.
@@ -85,7 +85,7 @@ class login:
             self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("password_is_empty_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("password_is_empty_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Boş bırakılamaz")
             self.driver.execute_script("window.history.go(-1)")
 
     # Geçersiz mail girme testi.
@@ -104,7 +104,7 @@ class login:
             self.driver.execute_script("window.history.go(-1)")
 
         except:
-            print("invalid_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı.")
+            print("invalid_login --->   " + "TEST BAŞARISIZ! İstenilen hata mesajı alınamadı: " + "Geçersiz e-posta adresi")
 
             self.driver.execute_script("window.history.go(-1)")
 
